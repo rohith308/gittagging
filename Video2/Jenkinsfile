@@ -1,16 +1,21 @@
 pipeline {
-agent any
-stages {
-stage('Checkout') {
-steps {
-git url: 'https://github.com/rohith308/gittagging.git'
-}
-}
-stage('Tagging') {
-steps {
-sh 'git tag -a tag1 -m "Version 1.0"'
-sh 'git push --tags'
-}
-}
-}
+    agent any
+
+ 
+
+    stages {
+        stage('Git Tagging') {
+            steps {
+                script {
+                    def tagName = "v1.8" // Set your desired tag name here
+
+ 
+
+                    sh "git tag ${tagName}" // Creates the Git tag
+                    sh "git push origin ${tagName}" // Pushes the tag to the remote repository
+                }
+            }
+        }
+        // Other stages in your pipeline...
+    }
 }
