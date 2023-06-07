@@ -9,7 +9,7 @@ git url: 'https://github.com/rohith308/gittagging.git'
 stage('Tagging') {
 steps {
 sh 'git tag -a v1.0 -m "Version 1.0"'
-sh 'git push origin --tags'
+sh 'git push --tags'
 }
 }
 }
